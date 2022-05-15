@@ -1,0 +1,20 @@
+{
+  "name": "user-side-backend",
+  "version": "1.0.0",
+  "description": "Backend application developed using nodejs typescript, express, mongoDB Atlas, PrismaORM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marlinsk/user-side-backend.git"
+  },
+  "keywords": [],
+  "author": "Marlinsk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marlinsk/user-side-backend/issues"
+  },
+  "homepage": "https://github.com/Marlinsk/user-side-backend#readme"
+}
