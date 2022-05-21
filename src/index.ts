@@ -25,12 +25,66 @@ app.get("/feed/", async (request, response) => {
   }
 });
 
-app.get("/:id/profile", async (request, response) => {
+app.get("/profile/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const profile = await prisma.user.findUnique({
       where: {
         id,
+      },
+    });
+    response
+      .status(200)
+      .json({ messagem: "Profile found successfully!", profile: profile });
+  } catch (error) {
+    response.status(400).json({ error: error });
+  }
+});
+
+app.get("/profile/:completename", async (request, response) => {
+  try {
+    const { completename } = request.params;
+    const profile = await prisma.user.findMany({
+      where: {
+        completename: {
+          contains: completename,
+        },
+      },
+    });
+    response
+      .status(200)
+      .json({ messagem: "Profile found successfully!", profile: profile });
+  } catch (error) {
+    response.status(400).json({ error: error });
+  }
+});
+
+app.get("/profile/:username", async (request, response) => {
+  try {
+    const { username } = request.params;
+    const profile = await prisma.user.findMany({
+      where: {
+        username: {
+          contains: username,
+        },
+      },
+    });
+    response
+      .status(200)
+      .json({ messagem: "Profile found successfully!", profile: profile });
+  } catch (error) {
+    response.status(400).json({ error: error });
+  }
+});
+
+app.get("/profile/:email", async (request, response) => {
+  try {
+    const { email } = request.params;
+    const profile = await prisma.user.findMany({
+      where: {
+        email: {
+          contains: email,
+        },
       },
     });
     response
@@ -57,7 +111,11 @@ app.post("/create-user", async (request, response) => {
       create: createUserAccount,
     });
   } catch (error) {
-    response.status(400).json({ error: error });
+    response.status(400).json({
+      error: {
+        message: "Data is used by another account",
+      },
+    });
   }
 });
 
