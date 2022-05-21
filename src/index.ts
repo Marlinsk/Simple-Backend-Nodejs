@@ -119,7 +119,7 @@ app.post("/create-user", async (request, response) => {
   }
 });
 
-app.put("/:id/edit-user", async (request, response) => {
+app.put("/edit-user/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const { completename, username, email, password } = request.body;
