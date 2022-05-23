@@ -1,7 +1,8 @@
+import { User } from "../domain/entity/User";
 import { IUserAccountRepository } from "../modules/user/repositories/iUserAccountRepository";
 
 interface ICreateUserAccountUseCaseRequest {
-  completename?: string;
+  completename: string;
   username: string;
   email: string;
   password: string;
@@ -15,7 +16,7 @@ export class CreateUserAccountUseCase {
     username,
     email,
     password,
-  }: ICreateUserAccountUseCaseRequest) {
+  }: ICreateUserAccountUseCaseRequest): Promise<User> {
     // const checkUsernameExists = await this.userAccountRepository.findByUsername(
     //   username
     // );
@@ -30,11 +31,13 @@ export class CreateUserAccountUseCase {
     // if (checkEmailExists) {
     // }
 
-    await this.userAccountRepository.create({
+    const createUser = await this.userAccountRepository.create({
       completename,
       username,
       email,
       password,
     });
+
+    return createUser;
   }
 }
