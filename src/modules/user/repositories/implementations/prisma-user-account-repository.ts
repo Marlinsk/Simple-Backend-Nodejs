@@ -9,8 +9,8 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     username,
     email,
     password,
-  }: ICreateUserAccountDTO) {
-    await prisma.user.create({
+  }: ICreateUserAccountDTO): Promise<User> {
+    return await prisma.user.create({
       data: {
         completename,
         username,
@@ -20,25 +20,25 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  // async save({
-  //   id,
-  //   completename,
-  //   username,
-  //   email,
-  //   password,
-  // }: User): Promise<User> {
-  //   return await prisma.user.update({
-  //     where: {
-  //       id,
-  //     },
-  //     data: {
-  //       completename,
-  //       username,
-  //       email,
-  //       password,
-  //     },
-  //   });
-  // }
+  async update({
+    id,
+    completename,
+    username,
+    email,
+    password,
+  }: User): Promise<User> {
+    return await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        completename,
+        username,
+        email,
+        password,
+      },
+    });
+  }
 
   // async delete(id: string): Promise<void> {
   //   return await prisma.user.delete({
