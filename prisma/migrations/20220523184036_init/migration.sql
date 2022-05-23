@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Users_Accounts" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "completename" TEXT,
+    "completename" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL
