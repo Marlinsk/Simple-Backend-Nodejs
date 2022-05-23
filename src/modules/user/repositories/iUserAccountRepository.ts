@@ -2,8 +2,8 @@ import { User } from "../../../domain/entity/User";
 import { ICreateUserAccountDTO } from "../dto/iCreateUserAccountDTO";
 
 export interface IUserAccountRepository {
-  create(data: ICreateUserAccountDTO): Promise<void>;
-  // save(user: User): Promise<User>;
+  create(data: ICreateUserAccountDTO): Promise<User>;
+  update(user: User): Promise<User>;
   // delete(id: string): Promise<void>;
   // findAllUsers(): Promise<User>;
   // findById(id: string): Promise<User | null>;
