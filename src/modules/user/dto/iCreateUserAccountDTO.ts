@@ -1,5 +1,5 @@
 export interface ICreateUserAccountDTO {
-  completename?: string;
+  completename: string;
   username: string;
   email: string;
   password: string;
