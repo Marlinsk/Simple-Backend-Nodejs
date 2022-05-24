@@ -4,7 +4,7 @@ import { ICreateUserAccountDTO } from "../dto/iCreateUserAccountDTO";
 export interface IUserAccountRepository {
   create(data: ICreateUserAccountDTO): Promise<User>;
   update(user: User): Promise<User>;
-  // delete(id: string): Promise<void>;
+  delete(id: string): Promise<void>;
   // findAllUsers(): Promise<User>;
   // findById(id: string): Promise<User | null>;
   // findByCompleteName(completename: string): Promise<User | null>;
