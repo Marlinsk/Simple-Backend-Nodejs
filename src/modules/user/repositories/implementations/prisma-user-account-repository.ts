@@ -40,13 +40,13 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  // async delete(id: string): Promise<void> {
-  //   return await prisma.user.delete({
-  //     where: {
-  //       id,
-  //     },
-  //   });
-  // }
+  async delete(id: string) {
+    await prisma.user.delete({
+      where: {
+        id,
+      },
+    });
+  }
 
   // async findAllUsers(): Promise<User> {
   //   return await prisma.user.findMany();
