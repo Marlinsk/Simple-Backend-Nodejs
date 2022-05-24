@@ -1,5 +1,5 @@
-import { User } from "../domain/entity/User";
-import { IUserAccountRepository } from "../modules/user/repositories/iUserAccountRepository";
+import { User } from "../../../domain/entity/User";
+import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 
 interface IUpdateUserAccountUseCaseRequest {
   id: string;
