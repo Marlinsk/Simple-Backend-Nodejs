@@ -1,4 +1,4 @@
-import { User } from "../../domain/entity/User";
+import { User } from "../domain/entity/User";
 import { ICreateUserAccountDTO } from "../dto/iCreateUserAccountDTO";
 
 export interface IUserAccountRepository {
