@@ -1,12 +1,15 @@
 import express, { request, response, Router } from "express";
 
+import { PrismaUserAccountRepository } from "../../../repositories/implementations/prisma-user-account-repository";
+
 import { CreateUserAccountUseCase } from "../../../usecases/create-user-account-usecase";
 import { DeleteUserAccountUseCase } from "../../../usecases/delete-user-account-usecase";
+import { FindAllUsersUseCase } from "../../../usecases/find-all-users-usecase";
 import { UpdateUserAccountUseCase } from "../../../usecases/update-user-account-usecase";
 
-import { PrismaUserAccountRepository } from "../../../repositories/implementations/prisma-user-account-repository";
 import { CreateUserAccountController } from "../controllers/create-user-account-controller";
 import { DeleteUserAccountController } from "../controllers/delete-user-account-controller";
+import { FindAllUsersController } from "../controllers/find-all-users-controller";
 import { UpdateUserAccountController } from "../controllers/update-user-account-controller";
 
 export const routes = express.Router();
@@ -45,4 +48,16 @@ routes.delete("/delete/:id", async (request, response) => {
   );
 
   return deleteUserAccountController.handle(request, response);
+});
+
+routes.get("/data/users/", async (request, response) => {
+  const prismaUserAccountRepository = new PrismaUserAccountRepository();
+  const findAllUsersUseCase = new FindAllUsersUseCase(
+    prismaUserAccountRepository
+  );
+  const findAllUsersController = new FindAllUsersController(
+    findAllUsersUseCase
+  );
+
+  return findAllUsersController.handle(request, response);
 });
