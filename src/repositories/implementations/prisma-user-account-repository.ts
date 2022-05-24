@@ -48,9 +48,9 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  // async findAllUsers(): Promise<User> {
-  //   return await prisma.user.findMany();
-  // }
+  async findAllUsers(): Promise<User[]> {
+    return await prisma.user.findMany();
+  }
 
   // async findById(id: string): Promise<User | null> {
   //   return await prisma.user.findUnique({
