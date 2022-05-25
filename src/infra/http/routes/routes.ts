@@ -5,11 +5,19 @@ import { PrismaUserAccountRepository } from "../../../repositories/implementatio
 import { CreateUserAccountUseCase } from "../../../usecases/create-user-account-usecase";
 import { DeleteUserAccountUseCase } from "../../../usecases/delete-user-account-usecase";
 import { FindAllUsersUseCase } from "../../../usecases/find-all-users-usecase";
+import { FindByCompleteNameUseCase } from "../../../usecases/find-by-complete-name-usecase";
+import { FindByEmailUseCase } from "../../../usecases/find-by-email-usecase";
+import { FindByIDUseCase } from "../../../usecases/find-by-id-usecase";
+import { FindByUsernameUseCase } from "../../../usecases/find-by-username-usecase";
 import { UpdateUserAccountUseCase } from "../../../usecases/update-user-account-usecase";
 
 import { CreateUserAccountController } from "../controllers/create-user-account-controller";
 import { DeleteUserAccountController } from "../controllers/delete-user-account-controller";
 import { FindAllUsersController } from "../controllers/find-all-users-controller";
+import { FindByCompleteNameController } from "../controllers/find-by-complete-name-controller";
+import { FindByEmailController } from "../controllers/find-by-email-controller";
+import { FindByIDController } from "../controllers/find-by-id-controller";
+import { FindByUsernameController } from "../controllers/find-by-username-controller";
 import { UpdateUserAccountController } from "../controllers/update-user-account-controller";
 
 export const routes = express.Router();
@@ -60,4 +68,46 @@ routes.get("/data/users/", async (request, response) => {
   );
 
   return findAllUsersController.handle(request, response);
+});
+
+routes.get("/data/profile/:id", async (request, response) => {
+  const prismaUserAccountRepository = new PrismaUserAccountRepository();
+  const findByIDUseCase = new FindByIDUseCase(prismaUserAccountRepository);
+  const findByIDController = new FindByIDController(findByIDUseCase);
+
+  return findByIDController.handle(request, response);
+});
+
+routes.get("/data/profile/:completename", async (request, response) => {
+  const prismaUserAccountRepository = new PrismaUserAccountRepository();
+  const findByCompleteNameUseCase = new FindByCompleteNameUseCase(
+    prismaUserAccountRepository
+  );
+  const findByCompleteNameController = new FindByCompleteNameController(
+    findByCompleteNameUseCase
+  );
+
+  return findByCompleteNameController.handle(request, response);
+});
+
+routes.get("/data/profile/:username", async (request, response) => {
+  const prismaUserAccountRepository = new PrismaUserAccountRepository();
+  const findByUsernameUseCase = new FindByUsernameUseCase(
+    prismaUserAccountRepository
+  );
+  const findByUsernameController = new FindByUsernameController(
+    findByUsernameUseCase
+  );
+
+  return findByUsernameController.handle(request, response);
+});
+
+routes.get("/data/profile/:email", async (request, response) => {
+  const prismaUserAccountRepository = new PrismaUserAccountRepository();
+  const findByEmailUseCase = new FindByEmailUseCase(
+    prismaUserAccountRepository
+  );
+  const findByEmailController = new FindByEmailController(findByEmailUseCase);
+
+  return findByEmailController.handle(request, response);
 });
