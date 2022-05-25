@@ -52,41 +52,41 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     return await prisma.user.findMany();
   }
 
-  // async findById(id: string): Promise<User | null> {
-  //   return await prisma.user.findUnique({
-  //     where: {
-  //       id,
-  //     },
-  //   });
-  // }
+  async findById(id: string) {
+    await prisma.user.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
 
-  // async findByCompleteName(completename: string): Promise<User | null> {
-  //   return await prisma.user.findMany({
-  //     where: {
-  //       completename: {
-  //         contains: completename,
-  //       },
-  //     },
-  //   });
-  // }
+  async findByCompleteName(completename: string) {
+    await prisma.user.findMany({
+      where: {
+        completename: {
+          contains: completename,
+        },
+      },
+    });
+  }
 
-  // async findByUsername(username: string): Promise<User | null> {
-  //   return await prisma.user.findMany({
-  //     where: {
-  //       username: {
-  //         contains: username,
-  //       },
-  //     },
-  //   });
-  // }
+  async findByUsername(username: string) {
+    await prisma.user.findMany({
+      where: {
+        username: {
+          contains: username,
+        },
+      },
+    });
+  }
 
-  // async findByEmail(email: string): Promise<User> {
-  //   return await prisma.user.findMany({
-  //     where: {
-  //       email: {
-  //         contains: email,
-  //       },
-  //     },
-  //   });
-  // }
+  async findByEmail(email: string) {
+    await prisma.user.findMany({
+      where: {
+        email: {
+          contains: email,
+        },
+      },
+    });
+  }
 }
