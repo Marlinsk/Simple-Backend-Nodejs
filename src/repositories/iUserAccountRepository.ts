@@ -6,8 +6,8 @@ export interface IUserAccountRepository {
   update(user: User): Promise<User>;
   delete(id: string): Promise<void>;
   findAllUsers(): Promise<User[]>;
-  // findById(id: string): Promise<User | null>;
-  // findByCompleteName(completename: string): Promise<User | null>;
-  // findByUsername(username: string): Promise<User | null>;
-  // findByEmail(email: string): Promise<User | null>;
+  findById(id: string): Promise<void>;
+  findByCompleteName(completename: string): Promise<void>;
+  findByUsername(username: string): Promise<void>;
+  findByEmail(email: string): Promise<void>;
 }
