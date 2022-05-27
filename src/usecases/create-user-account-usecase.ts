@@ -1,5 +1,6 @@
 import { User } from "../domain/entity/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
+import { AppError } from "../infra/shared/errors/AppError";
 
 interface ICreateUserAccountUseCaseRequest {
   completename: string;
@@ -17,19 +18,33 @@ export class CreateUserAccountUseCase {
     email,
     password,
   }: ICreateUserAccountUseCaseRequest): Promise<User> {
-    // const checkUsernameExists = await this.userAccountRepository.findByUsername(
-    //   username
-    // );
+    if (!username) {
+      throw new AppError("Username cannot be empty!");
+    }
 
-    // const checkEmailExists = await this.userAccountRepository.findByEmail(
-    //   email
-    // );
+    if (!email) {
+      throw new AppError("Email cannot be empty!");
+    }
 
-    // if (checkUsernameExists) {
-    // }
+    if (!password) {
+      throw new AppError("Password cannot be empty!");
+    }
 
-    // if (checkEmailExists) {
-    // }
+    const checkUsernameExists = await this.userAccountRepository.findByUsername(
+      username
+    );
+
+    const checkEmailExists = await this.userAccountRepository.findByEmail(
+      email
+    );
+
+    if (checkUsernameExists) {
+      throw new AppError("This username is already in use!");
+    }
+
+    if (checkEmailExists) {
+      throw new AppError("This email is already in use!");
+    }
 
     const createUser = await this.userAccountRepository.create({
       completename,
