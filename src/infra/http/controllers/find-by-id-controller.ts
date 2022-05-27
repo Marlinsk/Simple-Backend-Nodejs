@@ -12,7 +12,7 @@ export class FindByIDController {
         .status(200)
         .json({ messsage: "Profile found successfully!", profile: user });
     } catch (error) {
-      return response.status(400).json();
+      return response.status(400).json({ error });
     }
   }
 }

@@ -11,7 +11,7 @@ export class FindAllUsersController {
         .status(200)
         .json({ message: "Request made successfully", profiles: users });
     } catch (error) {
-      return response.status(400).json();
+      return response.status(400).json({ error });
     }
   }
 }

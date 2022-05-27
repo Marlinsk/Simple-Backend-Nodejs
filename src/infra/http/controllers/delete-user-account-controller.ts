@@ -13,7 +13,7 @@ export class DeleteUserAccountController {
         message: "User successfully deleted from dataset",
       });
     } catch (error) {
-      return response.status(400).json();
+      return response.status(400).json({ error });
     }
   }
 }

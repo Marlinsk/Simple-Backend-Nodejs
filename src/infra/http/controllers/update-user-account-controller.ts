@@ -20,7 +20,7 @@ export class UpdateUserAccountController {
         .status(200)
         .json({ message: "User successfully updated in in dataset" });
     } catch (error) {
-      return response.status(400).json();
+      return response.status(400).json({ error });
     }
   }
 }

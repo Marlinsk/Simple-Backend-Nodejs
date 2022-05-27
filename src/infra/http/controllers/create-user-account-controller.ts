@@ -18,7 +18,7 @@ export class CreateUserAccountController {
         .status(201)
         .json({ message: "User successfully created in dataset" });
     } catch (error) {
-      return response.status(400).json();
+      return response.status(400).json({ error });
     }
   }
 }
