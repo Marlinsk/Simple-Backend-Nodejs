@@ -22,7 +22,7 @@ import { UpdateUserAccountController } from "../controllers/update-user-account-
 
 export const routes = express.Router();
 
-routes.post("/create-user/", async (request, response) => {
+routes.post("/api/v1/data/create-user", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const createUserAccountUseCase = new CreateUserAccountUseCase(
     prismaUserAccountRepository
@@ -34,31 +34,37 @@ routes.post("/create-user/", async (request, response) => {
   return await createUserAccountController.handle(request, response);
 });
 
-routes.put("/edit-user/:id", async (request, response) => {
-  const prismaUserAccountRepository = new PrismaUserAccountRepository();
-  const updateUserAccountUseCase = new UpdateUserAccountUseCase(
-    prismaUserAccountRepository
-  );
-  const updateUserAccountController = new UpdateUserAccountController(
-    updateUserAccountUseCase
-  );
+routes.put(
+  "/api/v1/data/user/options/edit-user/:id",
+  async (request, response) => {
+    const prismaUserAccountRepository = new PrismaUserAccountRepository();
+    const updateUserAccountUseCase = new UpdateUserAccountUseCase(
+      prismaUserAccountRepository
+    );
+    const updateUserAccountController = new UpdateUserAccountController(
+      updateUserAccountUseCase
+    );
 
-  return await updateUserAccountController.handle(request, response);
-});
+    return await updateUserAccountController.handle(request, response);
+  }
+);
 
-routes.delete("/delete/:id", async (request, response) => {
-  const prismaUserAccountRepository = new PrismaUserAccountRepository();
-  const deleteUserAccountUseCase = new DeleteUserAccountUseCase(
-    prismaUserAccountRepository
-  );
-  const deleteUserAccountController = new DeleteUserAccountController(
-    deleteUserAccountUseCase
-  );
+routes.delete(
+  "/api/v1/data/user/options/delete/:id",
+  async (request, response) => {
+    const prismaUserAccountRepository = new PrismaUserAccountRepository();
+    const deleteUserAccountUseCase = new DeleteUserAccountUseCase(
+      prismaUserAccountRepository
+    );
+    const deleteUserAccountController = new DeleteUserAccountController(
+      deleteUserAccountUseCase
+    );
 
-  return deleteUserAccountController.handle(request, response);
-});
+    return deleteUserAccountController.handle(request, response);
+  }
+);
 
-routes.get("/data/users/", async (request, response) => {
+routes.get("/api/v1/data", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const findAllUsersUseCase = new FindAllUsersUseCase(
     prismaUserAccountRepository
@@ -70,7 +76,7 @@ routes.get("/data/users/", async (request, response) => {
   return findAllUsersController.handle(request, response);
 });
 
-routes.get("/data/profile/:id", async (request, response) => {
+routes.get("/api/v1/data/:id", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const findByIDUseCase = new FindByIDUseCase(prismaUserAccountRepository);
   const findByIDController = new FindByIDController(findByIDUseCase);
@@ -78,7 +84,7 @@ routes.get("/data/profile/:id", async (request, response) => {
   return findByIDController.handle(request, response);
 });
 
-routes.get("/data/profile/:completename", async (request, response) => {
+routes.get("/api/v1/data/:completename", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const findByCompleteNameUseCase = new FindByCompleteNameUseCase(
     prismaUserAccountRepository
@@ -90,7 +96,7 @@ routes.get("/data/profile/:completename", async (request, response) => {
   return findByCompleteNameController.handle(request, response);
 });
 
-routes.get("/data/profile/:username", async (request, response) => {
+routes.get("/api/v1/data/:username", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const findByUsernameUseCase = new FindByUsernameUseCase(
     prismaUserAccountRepository
@@ -102,7 +108,7 @@ routes.get("/data/profile/:username", async (request, response) => {
   return findByUsernameController.handle(request, response);
 });
 
-routes.get("/data/profile/:email", async (request, response) => {
+routes.get("/api/v1/data/:email", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const findByEmailUseCase = new FindByEmailUseCase(
     prismaUserAccountRepository
