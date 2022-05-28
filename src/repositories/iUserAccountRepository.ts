@@ -7,7 +7,5 @@ export interface IUserAccountRepository {
   delete(id: string): Promise<void>;
   findAllUsers(): Promise<User[]>;
   findById(id: string): Promise<User | null>;
-  findByCompleteName(completename: string): Promise<User[]>;
   findByUsername(username: string): Promise<User | null>;
-  findByEmail(email: string): Promise<User | null>;
 }

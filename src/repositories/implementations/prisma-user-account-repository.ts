@@ -60,28 +60,10 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async findByCompleteName(completename: string): Promise<User[]> {
-    return await prisma.user.findMany({
-      where: {
-        completename: {
-          contains: completename,
-        },
-      },
-    });
-  }
-
   async findByUsername(username: string): Promise<User | null> {
     return await prisma.user.findUnique({
       where: {
         username,
-      },
-    });
-  }
-
-  async findByEmail(email: string): Promise<User | null> {
-    return await prisma.user.findUnique({
-      where: {
-        email,
       },
     });
   }
