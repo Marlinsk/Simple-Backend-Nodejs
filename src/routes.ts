@@ -1,24 +1,24 @@
 import express, { request, response, Router } from "express";
 
-import { PrismaUserAccountRepository } from "../../../repositories/implementations/prisma-user-account-repository";
+import { PrismaUserAccountRepository } from "./repositories/implementations/prisma-user-account-repository";
 
-import { CreateUserAccountUseCase } from "../../../usecases/create-user-account-usecase";
-import { DeleteUserAccountUseCase } from "../../../usecases/delete-user-account-usecase";
-import { FindAllUsersUseCase } from "../../../usecases/find-all-users-usecase";
-import { FindByCompleteNameUseCase } from "../../../usecases/find-by-complete-name-usecase";
-import { FindByEmailUseCase } from "../../../usecases/find-by-email-usecase";
-import { FindByIDUseCase } from "../../../usecases/find-by-id-usecase";
-import { FindByUsernameUseCase } from "../../../usecases/find-by-username-usecase";
-import { UpdateUserAccountUseCase } from "../../../usecases/update-user-account-usecase";
+import { CreateUserAccountUseCase } from "./usecases/create-user-account-usecase";
+import { DeleteUserAccountUseCase } from "./usecases/delete-user-account-usecase";
+import { FindAllUsersUseCase } from "./usecases/find-all-users-usecase";
+import { FindByCompleteNameUseCase } from "./usecases/find-by-complete-name-usecase";
+import { FindByEmailUseCase } from "./usecases/find-by-email-usecase";
+import { FindByIDUseCase } from "./usecases/find-by-id-usecase";
+import { FindByUsernameUseCase } from "./usecases/find-by-username-usecase";
+import { UpdateUserAccountUseCase } from "./usecases/update-user-account-usecase";
 
-import { CreateUserAccountController } from "../controllers/create-user-account-controller";
-import { DeleteUserAccountController } from "../controllers/delete-user-account-controller";
-import { FindAllUsersController } from "../controllers/find-all-users-controller";
-import { FindByCompleteNameController } from "../controllers/find-by-complete-name-controller";
-import { FindByEmailController } from "../controllers/find-by-email-controller";
-import { FindByIDController } from "../controllers/find-by-id-controller";
-import { FindByUsernameController } from "../controllers/find-by-username-controller";
-import { UpdateUserAccountController } from "../controllers/update-user-account-controller";
+import { CreateUserAccountController } from "./controllers/create-user-account-controller";
+import { DeleteUserAccountController } from "./controllers/delete-user-account-controller";
+import { FindAllUsersController } from "./controllers/find-all-users-controller";
+import { FindByCompleteNameController } from "./controllers/find-by-complete-name-controller";
+import { FindByEmailController } from "./controllers/find-by-email-controller";
+import { FindByIDController } from "./controllers/find-by-id-controller";
+import { FindByUsernameController } from "./controllers/find-by-username-controller";
+import { UpdateUserAccountController } from "./controllers/update-user-account-controller";
 
 export const routes = express.Router();
 
