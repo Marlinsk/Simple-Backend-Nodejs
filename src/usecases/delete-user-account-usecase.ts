@@ -1,5 +1,5 @@
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { AppError } from "../infra/shared/errors/AppError";
+import { AppError } from "../errors/AppError";
 
 export class DeleteUserAccountUseCase {
   constructor(private userAccountRepository: IUserAccountRepository) {}

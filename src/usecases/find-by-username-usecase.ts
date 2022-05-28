@@ -1,6 +1,6 @@
 import { User } from "../domain/entity/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { AppError } from "../infra/shared/errors/AppError";
+import { AppError } from "../errors/AppError";
 
 export class FindByUsernameUseCase {
   constructor(private userAccountRepository: IUserAccountRepository) {}
