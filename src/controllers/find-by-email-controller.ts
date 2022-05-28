@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { FindByEmailUseCase } from "../../../usecases/find-by-email-usecase";
+import { FindByEmailUseCase } from "../usecases/find-by-email-usecase";
 
 export class FindByEmailController {
   constructor(private findByEmailUseCase: FindByEmailUseCase) {}

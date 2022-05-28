@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { FindAllUsersUseCase } from "../../../usecases/find-all-users-usecase";
+import { FindAllUsersUseCase } from "../usecases/find-all-users-usecase";
 
 export class FindAllUsersController {
   constructor(private findAllUsersUseCase: FindAllUsersUseCase) {}
