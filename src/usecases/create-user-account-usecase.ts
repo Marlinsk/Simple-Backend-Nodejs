@@ -1,6 +1,7 @@
 import { User } from "../domain/entity/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
+import { hash } from "bcrypt";
 
 interface ICreateUserAccountUseCaseRequest {
   completename: string;
@@ -46,11 +47,13 @@ export class CreateUserAccountUseCase {
       throw new AppError("This email is already in use!");
     }
 
+    const passwordHash = await hash(password, 8);
+
     const createUser = await this.userAccountRepository.create({
       completename,
       username,
       email,
-      password,
+      password: passwordHash,
     });
 
     return createUser;
