@@ -8,7 +8,7 @@ export class CreateUserAccountController {
     const { completename, username, email, password } = request.body;
 
     try {
-      await this.createUserAccountUseCase.execute({
+      const user = await this.createUserAccountUseCase.execute({
         completename,
         username,
         email,
@@ -16,7 +16,10 @@ export class CreateUserAccountController {
       });
       return response
         .status(201)
-        .json({ message: "User successfully created in dataset" });
+        .json({
+          message: "User successfully created in dataset",
+          profile: user,
+        });
     } catch (error) {
       return response.status(400).json({ error });
     }

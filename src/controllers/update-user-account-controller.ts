@@ -9,7 +9,7 @@ export class UpdateUserAccountController {
     const { completename, username, email, password } = request.body;
 
     try {
-      await this.updateUserAccountUseCase.execute({
+      const user = await this.updateUserAccountUseCase.execute({
         id,
         completename,
         username,
@@ -18,7 +18,10 @@ export class UpdateUserAccountController {
       });
       return response
         .status(200)
-        .json({ message: "User successfully updated in in dataset" });
+        .json({
+          message: "User successfully updated in in dataset",
+          profile: user,
+        });
     } catch (error) {
       return response.status(400).json({ error });
     }
