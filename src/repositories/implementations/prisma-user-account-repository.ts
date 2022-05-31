@@ -9,8 +9,8 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     username,
     email,
     password,
-  }: ICreateUserAccountDTO) {
-    await prisma.user.create({
+  }: ICreateUserAccountDTO): Promise<User> {
+    return await prisma.user.create({
       data: {
         completename,
         username,
