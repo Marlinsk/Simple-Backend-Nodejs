@@ -1,6 +1,7 @@
 import express, { request, response, Router } from "express";
 
 import { PrismaUserAccountRepository } from "./repositories/implementations/prisma-user-account-repository";
+import { NodemailerMailAdapter } from "./adapters/nodemailer/nodemailer-mail-adapter";
 
 import { CreateUserAccountUseCase } from "./usecases/create-user-account-usecase";
 import { DeleteUserAccountUseCase } from "./usecases/delete-user-account-usecase";
@@ -20,8 +21,10 @@ export const routes = express.Router();
 
 routes.post("/api/v1/data/create-user", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
+  const nodemailerMailAdapter = new NodemailerMailAdapter();
   const createUserAccountUseCase = new CreateUserAccountUseCase(
-    prismaUserAccountRepository
+    prismaUserAccountRepository,
+    nodemailerMailAdapter
   );
   const createUserAccountController = new CreateUserAccountController(
     createUserAccountUseCase

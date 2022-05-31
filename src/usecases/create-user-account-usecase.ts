@@ -1,6 +1,8 @@
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 import { hash } from "bcrypt";
+import { User } from "../domain/entity/User";
+import { MailAdapter } from "../adapters/mail-adapter";
 
 interface ICreateUserAccountUseCaseRequest {
   completename: string;
@@ -10,14 +12,17 @@ interface ICreateUserAccountUseCaseRequest {
 }
 
 export class CreateUserAccountUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) {}
+  constructor(
+    private userAccountRepository: IUserAccountRepository,
+    private mailAdapter: MailAdapter
+  ) {}
 
   async execute({
     completename,
     username,
     email,
     password,
-  }: ICreateUserAccountUseCaseRequest) {
+  }: ICreateUserAccountUseCaseRequest): Promise<User> {
     if (!username) {
       throw new AppError("Username cannot be empty!");
     }
@@ -53,6 +58,16 @@ export class CreateUserAccountUseCase {
       username,
       email,
       password: passwordHash,
+    });
+
+    await this.mailAdapter.sendMail({
+      subject: "Usuário Cadastrado",
+      body: [
+        `<div style="font-family: sans-serif; font-size: 16px; color: #000;">`,
+        `<p>Perfeito!</p>`,
+        `<p>Usuário foi cadastrado com sucesso no banco de dados.</p>`,
+        `</div>`,
+      ].join("\n"),
     });
 
     return createUser;
