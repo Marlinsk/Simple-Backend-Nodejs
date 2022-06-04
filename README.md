@@ -10,7 +10,10 @@ This Back-end project was developed to serve as a practical mini-reference of th
 - ts-node-dev
 - express
 - prisma
-- nodemailer 
+- SQLite
+- nodemailer
+- cors
+- bcrypt 
 
 ## Cloning repository
 Command to clone the application in your development environment
