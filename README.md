@@ -25,5 +25,5 @@ npm run dev
 ```
 Application port.
 ```bash
-[npm run dev](http://localhost:5500/)
+http://localhost:5500/
 ```
