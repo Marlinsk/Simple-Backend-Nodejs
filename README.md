@@ -12,13 +12,19 @@ This Back-end project was developed to serve as a practical mini-reference of th
 - prisma
 - nodemailer 
 
+## Cloning repository
+Command to clone the application in your development environment
+```bash
+git clone https://github.com/Marlinsk/simple-backend.git
+```
+
 ## Installation
 Command to download project dependencies using npm.
 ```bash
 npm i
 ```
 
-## Making the application run
+## Making the application working
 Terminal command to run the application using npm.
 ```bash
 npm run dev
