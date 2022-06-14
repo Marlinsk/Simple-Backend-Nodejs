@@ -1,7 +1,7 @@
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 import { hash } from "bcrypt";
-import { User } from "../domain/entity/User";
+import { UserEntity } from "../domain/entity/User";
 import { MailAdapter } from "../adapters/mail-adapter";
 
 interface ICreateUserAccountUseCaseRequest {
@@ -22,7 +22,7 @@ export class CreateUserAccountUseCase {
     username,
     email,
     password,
-  }: ICreateUserAccountUseCaseRequest): Promise<User> {
+  }: ICreateUserAccountUseCaseRequest): Promise<UserEntity> {
     if (!username) {
       throw new AppError("Username cannot be empty!");
     }

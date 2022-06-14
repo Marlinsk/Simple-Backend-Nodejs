@@ -1,4 +1,4 @@
-import { User } from "../domain/entity/User";
+import { UserEntity } from "../domain/entity/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 
@@ -19,7 +19,7 @@ export class UpdateUserAccountUseCase {
     username,
     email,
     password,
-  }: IUpdateUserAccountUseCaseRequest): Promise<User> {
+  }: IUpdateUserAccountUseCaseRequest): Promise<UserEntity> {
     const checkUserID = await this.userAccountRepository.findById(id);
 
     if (checkUserID === null) {
