@@ -1,4 +1,4 @@
-import { User } from "../../domain/entity/User";
+import { UserEntity } from "../../domain/entity/User";
 import { prisma } from "../../prisma";
 import { ICreateUserAccountDTO } from "../../dto/iCreateUserAccountDTO";
 import { IUserAccountRepository } from "../iUserAccountRepository";
@@ -9,7 +9,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     username,
     email,
     password,
-  }: ICreateUserAccountDTO): Promise<User> {
+  }: ICreateUserAccountDTO): Promise<UserEntity> {
     return await prisma.user.create({
       data: {
         completename,
@@ -26,7 +26,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     username,
     email,
     password,
-  }: User): Promise<User> {
+  }: UserEntity): Promise<UserEntity> {
     return await prisma.user.update({
       where: {
         id,
@@ -48,11 +48,11 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async findAllUsers(): Promise<User[]> {
+  async findAllUsers(): Promise<UserEntity[]> {
     return await prisma.user.findMany();
   }
 
-  async findById(id: string): Promise<User | null> {
+  async findById(id: string): Promise<UserEntity | null> {
     return await prisma.user.findUnique({
       where: {
         id,
@@ -60,7 +60,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async findByUsername(username: string): Promise<User | null> {
+  async findByUsername(username: string): Promise<UserEntity | null> {
     return await prisma.user.findUnique({
       where: {
         username,
@@ -68,7 +68,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async findByEmail(email: string): Promise<User | null> {
+  async findByEmail(email: string): Promise<UserEntity | null> {
     return await prisma.user.findUnique({
       where: {
         email,
