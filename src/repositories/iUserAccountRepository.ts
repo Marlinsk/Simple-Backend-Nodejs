@@ -1,12 +1,12 @@
-import { User } from "../domain/entity/User";
+import { UserEntity } from "../domain/entity/User";
 import { ICreateUserAccountDTO } from "../dto/iCreateUserAccountDTO";
 
 export interface IUserAccountRepository {
-  create(data: ICreateUserAccountDTO): Promise<User>;
-  update(user: User): Promise<User>;
+  create(data: ICreateUserAccountDTO): Promise<UserEntity>;
+  update(user: UserEntity): Promise<UserEntity>;
   delete(id: string): Promise<void>;
-  findAllUsers(): Promise<User[]>;
-  findById(id: string): Promise<User | null>;
-  findByUsername(username: string): Promise<User | null>;
-  findByEmail(email: string): Promise<User | null>;
+  findAllUsers(): Promise<UserEntity[]>;
+  findById(id: string): Promise<UserEntity | null>;
+  findByUsername(username: string): Promise<UserEntity | null>;
+  findByEmail(email: string): Promise<UserEntity | null>;
 }
