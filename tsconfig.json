@@ -11,9 +11,7 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
     "skipLibCheck": true
   },
   "include": ["src"],
