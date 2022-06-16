@@ -1,7 +1,8 @@
-import { UserEntity } from "../../domain/entity/User";
+import { UserEntity } from "../../domain/User";
 import { prisma } from "../../prisma";
 import { ICreateUserAccountDTO } from "../../dto/iCreateUserAccountDTO";
 import { IUserAccountRepository } from "../iUserAccountRepository";
+import { IUpdateUserAccountDTO } from "../../dto/iUpdateUserAccountDTO";
 
 export class PrismaUserAccountRepository implements IUserAccountRepository {
   async create({
@@ -26,7 +27,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     username,
     email,
     password,
-  }: UserEntity): Promise<UserEntity> {
+  }: IUpdateUserAccountDTO): Promise<UserEntity> {
     return await prisma.user.update({
       where: {
         id,
