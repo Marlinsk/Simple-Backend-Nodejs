@@ -1,4 +1,4 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../domain/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 

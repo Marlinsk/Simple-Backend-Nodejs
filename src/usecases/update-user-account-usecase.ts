@@ -1,6 +1,7 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../domain/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
+import { hash } from "bcrypt";
 
 interface IUpdateUserAccountUseCaseRequest {
   id: string;
@@ -26,28 +27,30 @@ export class UpdateUserAccountUseCase {
       throw new AppError("ID does not exist!");
     }
 
-    const checkUsernameExists = await this.userAccountRepository.findByUsername(
-      username
-    );
+    // const checkUsernameExists = await this.userAccountRepository.findByUsername(
+    //   username
+    // );
 
-    const checkEmailExists = await this.userAccountRepository.findByEmail(
-      email
-    );
+    // const checkEmailExists = await this.userAccountRepository.findByEmail(
+    //   email
+    // );
 
-    if (checkUsernameExists) {
-      throw new AppError("This username is already in use!");
-    }
+    // if (checkUsernameExists) {
+    //   throw new AppError("This username is already in use!");
+    // }
 
-    if (checkEmailExists) {
-      throw new AppError("This email is already in use!");
-    }
+    // if (checkEmailExists) {
+    //   throw new AppError("This email is already in use!");
+    // }
+
+    const passwordHash = await hash(password, 8);
 
     const updateUser = await this.userAccountRepository.update({
       id,
       completename,
       username,
       email,
-      password,
+      password: passwordHash,
     });
 
     return updateUser;
