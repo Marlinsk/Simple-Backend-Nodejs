@@ -1,9 +1,10 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../domain/User";
 import { ICreateUserAccountDTO } from "../dto/iCreateUserAccountDTO";
+import { IUpdateUserAccountDTO } from "../dto/iUpdateUserAccountDTO";
 
 export interface IUserAccountRepository {
   create(data: ICreateUserAccountDTO): Promise<UserEntity>;
-  update(user: UserEntity): Promise<UserEntity>;
+  update(data: IUpdateUserAccountDTO): Promise<UserEntity>;
   delete(id: string): Promise<void>;
   findAllUsers(): Promise<UserEntity[]>;
   findById(id: string): Promise<UserEntity | null>;
