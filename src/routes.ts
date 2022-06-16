@@ -75,7 +75,7 @@ routes.get("/api/v1/data", async (request, response) => {
   return findAllUsersController.handle(request, response);
 });
 
-routes.get("/api/v1/data/:id", async (request, response) => {
+routes.get("/api/v1/data/user/profile/id/:id", async (request, response) => {
   const prismaUserAccountRepository = new PrismaUserAccountRepository();
   const findByIDUseCase = new FindByIDUseCase(prismaUserAccountRepository);
   const findByIDController = new FindByIDController(findByIDUseCase);
@@ -83,14 +83,17 @@ routes.get("/api/v1/data/:id", async (request, response) => {
   return findByIDController.handle(request, response);
 });
 
-routes.get("/api/v1/data/:username", async (request, response) => {
-  const prismaUserAccountRepository = new PrismaUserAccountRepository();
-  const findByUsernameUseCase = new FindByUsernameUseCase(
-    prismaUserAccountRepository
-  );
-  const findByUsernameController = new FindByUsernameController(
-    findByUsernameUseCase
-  );
+routes.get(
+  "/api/v1/data/user/profile/username/:username",
+  async (request, response) => {
+    const prismaUserAccountRepository = new PrismaUserAccountRepository();
+    const findByUsernameUseCase = new FindByUsernameUseCase(
+      prismaUserAccountRepository
+    );
+    const findByUsernameController = new FindByUsernameController(
+      findByUsernameUseCase
+    );
 
-  return findByUsernameController.handle(request, response);
-});
+    return findByUsernameController.handle(request, response);
+  }
+);
