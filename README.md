@@ -11,8 +11,8 @@ This Back-end project was developed to serve as a practical mini-reference of th
 - express
 - prisma
 - SQLite
-- Eslint
-- Prettier
+- eslint
+- prettier
 - nodemailer
 - cors
 - bcrypt 
