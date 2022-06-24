@@ -26,7 +26,7 @@ git clone https://github.com/Marlinsk/simple-backend.git
 ## Installation
 Command to download project dependencies using npm.
 ```bash
-npm i
+npm install
 ```
 
 ## Making the application working
