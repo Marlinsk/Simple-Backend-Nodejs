@@ -1,4 +1,4 @@
-# Back-end Application
+# Simple Back-end Application
 Simple back-end, developed with good practices and technologies focused on the RestFull API.
 
 ## Description
@@ -11,6 +11,8 @@ This Back-end project was developed to serve as a practical mini-reference of th
 - express
 - prisma
 - SQLite
+- eslint
+- prettier
 - nodemailer
 - cors
 - bcrypt 
@@ -24,7 +26,7 @@ git clone https://github.com/Marlinsk/simple-backend.git
 ## Installation
 Command to download project dependencies using npm.
 ```bash
-npm i
+npm install
 ```
 
 ## Making the application working
