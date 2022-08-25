@@ -1,4 +1,4 @@
-import { UserEntity } from "../domain/User";
+import { UserEntity } from "../domain/entity/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 import { hash } from "bcrypt";
@@ -12,7 +12,7 @@ interface IUpdateUserAccountUseCaseRequest {
 }
 
 export class UpdateUserAccountUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) {}
+  constructor(private userAccountRepository: IUserAccountRepository) { }
 
   async execute({
     id,

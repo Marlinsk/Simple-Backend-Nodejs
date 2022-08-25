@@ -1,8 +1,8 @@
-import { UserEntity } from "../../domain/User";
+import { UserEntity } from "../../domain/entity/User";
 import { prisma } from "../../prisma";
-import { ICreateUserAccountDTO } from "../../dto/iCreateUserAccountDTO";
+import { ICreateUserAccountDTO } from "../../dtos/iCreateUserAccountDTO";
 import { IUserAccountRepository } from "../iUserAccountRepository";
-import { IUpdateUserAccountDTO } from "../../dto/iUpdateUserAccountDTO";
+import { IUpdateUserAccountDTO } from "../../dtos/iUpdateUserAccountDTO";
 
 export class PrismaUserAccountRepository implements IUserAccountRepository {
   async create({

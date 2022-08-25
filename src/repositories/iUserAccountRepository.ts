@@ -1,6 +1,6 @@
-import { UserEntity } from "../domain/User";
-import { ICreateUserAccountDTO } from "../dto/iCreateUserAccountDTO";
-import { IUpdateUserAccountDTO } from "../dto/iUpdateUserAccountDTO";
+import { UserEntity } from "../domain/entity/User";
+import { ICreateUserAccountDTO } from "../dtos/iCreateUserAccountDTO";
+import { IUpdateUserAccountDTO } from "../dtos/iUpdateUserAccountDTO";
 
 export interface IUserAccountRepository {
   create(data: ICreateUserAccountDTO): Promise<UserEntity>;

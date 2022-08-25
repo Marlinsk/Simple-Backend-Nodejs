@@ -1,7 +1,7 @@
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 import { hash } from "bcrypt";
-import { UserEntity } from "../domain/User";
+import { UserEntity } from "../domain/entity/User";
 import { MailAdapter } from "../adapters/mail-adapter";
 
 interface ICreateUserAccountUseCaseRequest {
@@ -15,7 +15,7 @@ export class CreateUserAccountUseCase {
   constructor(
     private userAccountRepository: IUserAccountRepository,
     private mailAdapter: MailAdapter
-  ) {}
+  ) { }
 
   async execute({
     completename,

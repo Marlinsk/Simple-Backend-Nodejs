@@ -1,9 +1,9 @@
-import { UserEntity } from "../domain/User";
+import { UserEntity } from "../domain/entity/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
 import { AppError } from "../errors/AppError";
 
 export class FindByUsernameUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) {}
+  constructor(private userAccountRepository: IUserAccountRepository) { }
 
   async execute(username: string): Promise<UserEntity | null> {
     const checkUsernameExists = await this.userAccountRepository.findByUsername(

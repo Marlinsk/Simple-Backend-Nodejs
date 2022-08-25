@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { FindByUsernameUseCase } from "../usecases/find-by-username-usecase";
 
 export class FindByUsernameController {
-  constructor(private findByUsernameUseCase: FindByUsernameUseCase) {}
+  constructor(private findByUsernameUseCase: FindByUsernameUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { username } = request.params;

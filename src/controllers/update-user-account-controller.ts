@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UpdateUserAccountUseCase } from "../usecases/update-user-account-usecase";
 
 export class UpdateUserAccountController {
-  constructor(private updateUserAccountUseCase: UpdateUserAccountUseCase) {}
+  constructor(private updateUserAccountUseCase: UpdateUserAccountUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;

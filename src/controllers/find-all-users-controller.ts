@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { FindAllUsersUseCase } from "../usecases/find-all-users-usecase";
 
 export class FindAllUsersController {
-  constructor(private findAllUsersUseCase: FindAllUsersUseCase) {}
+  constructor(private findAllUsersUseCase: FindAllUsersUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {

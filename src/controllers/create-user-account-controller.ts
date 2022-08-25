@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { CreateUserAccountUseCase } from "../usecases/create-user-account-usecase";
 
 export class CreateUserAccountController {
-  constructor(private createUserAccountUseCase: CreateUserAccountUseCase) {}
+  constructor(private createUserAccountUseCase: CreateUserAccountUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { completename, username, email, password } = request.body;
