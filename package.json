@@ -4,7 +4,7 @@
   "description": "Backend application developed using nodejs, typescript, ts-node-dev, express, nodemailer, cors, PrismaORM, SQLite.",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
+    "dev": "ts-node-dev src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
