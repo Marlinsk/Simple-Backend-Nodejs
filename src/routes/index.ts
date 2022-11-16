@@ -1,18 +1,8 @@
 import { NodemailerMailAdapter } from "src/adapters/nodemailer/nodemailer-mail-adapter";
-import { CreateUserAccountController } from "src/controllers/create-user-account-controller";
-import { DeleteUserAccountController } from "src/controllers/delete-user-account-controller";
-import { FindAllUsersController } from "src/controllers/find-all-users-controller";
-import { FindByIDController } from "src/controllers/find-by-id-controller";
-import { FindByUsernameController } from "src/controllers/find-by-username-controller";
-import { UpdateUserAccountController } from "src/controllers/update-user-account-controller";
 import { PrismaUserAccountRepository } from "src/repositories/implementations/prisma-user-account-repository";
-import { CreateUserAccountUseCase } from "src/usecases/create-user-account-usecase";
-import { DeleteUserAccountUseCase } from "src/usecases/delete-user-account-usecase";
-import { FindAllUsersUseCase } from "src/usecases/find-all-users-usecase";
-import { FindByIDUseCase } from "src/usecases/find-by-id-usecase";
-import { FindByUsernameUseCase } from "src/usecases/find-by-username-usecase";
-import { UpdateUserAccountUseCase } from "src/usecases/update-user-account-usecase";
 
+import { CreateUserAccountController, UpdateUserAccountController, FindAllUsersController, FindByIDController, FindByUsernameController, DeleteUserAccountController } from "src/controllers";
+import { CreateUserAccountUseCase, UpdateUserAccountUseCase, DeleteUserAccountUseCase, FindAllUsersUseCase, FindByIDUseCase, FindByUsernameUseCase } from "src/usecases";
 
 const prismaUserAccountRepository = new PrismaUserAccountRepository();
 const nodemailerMailAdapter = new NodemailerMailAdapter();
