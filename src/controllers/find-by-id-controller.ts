@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { FindByIDUseCase } from "../usecases/find-by-id-usecase";
+import { FindByIDUseCase } from "src/usecases";
 
 export class FindByIDController {
   constructor(private findByIDUseCase: FindByIDUseCase) { }
