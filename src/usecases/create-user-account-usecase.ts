@@ -1,10 +1,10 @@
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { AppError } from "../errors/AppError";
+import { BadRequestError } from "../errors/AppError";
 import { hash } from "bcrypt";
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../entities/User";
 import { MailAdapter } from "../adapters/mail-adapter";
 
-interface ICreateUserAccountUseCaseRequest {
+interface IRequest {
   completename: string;
   username: string;
   email: string;
@@ -22,17 +22,17 @@ export class CreateUserAccountUseCase {
     username,
     email,
     password,
-  }: ICreateUserAccountUseCaseRequest): Promise<UserEntity> {
+  }: IRequest): Promise<UserEntity> {
     if (!username) {
-      throw new AppError("Username cannot be empty!");
+      throw new BadRequestError("Username cannot be empty!");
     }
 
     if (!email) {
-      throw new AppError("Email cannot be empty!");
+      throw new BadRequestError("Email cannot be empty!");
     }
 
     if (!password) {
-      throw new AppError("Password cannot be empty!");
+      throw new BadRequestError("Password cannot be empty!");
     }
 
     const checkUsernameExists = await this.userAccountRepository.findByUsername(
@@ -44,11 +44,11 @@ export class CreateUserAccountUseCase {
     );
 
     if (checkUsernameExists) {
-      throw new AppError("This username is already in use!");
+      throw new BadRequestError("This username is already in use!");
     }
 
     if (checkEmailExists) {
-      throw new AppError("This email is already in use!");
+      throw new BadRequestError("This email is already in use!");
     }
 
     const passwordHash = await hash(password, 8);

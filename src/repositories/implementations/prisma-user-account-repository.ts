@@ -1,4 +1,4 @@
-import { UserEntity } from "../../domain/entity/User";
+import { UserEntity } from "../../entities/User";
 import { prisma } from "../../prisma";
 import { ICreateUserAccountDTO } from "../../dtos/iCreateUserAccountDTO";
 import { IUserAccountRepository } from "../iUserAccountRepository";

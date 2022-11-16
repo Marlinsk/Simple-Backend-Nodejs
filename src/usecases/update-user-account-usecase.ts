@@ -1,9 +1,9 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../entities/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { AppError } from "../errors/AppError";
+import { NotFoundError } from "../errors/AppError";
 import { hash } from "bcrypt";
 
-interface IUpdateUserAccountUseCaseRequest {
+interface IRequest {
   id: string;
   completename: string;
   username: string;
@@ -20,11 +20,11 @@ export class UpdateUserAccountUseCase {
     username,
     email,
     password,
-  }: IUpdateUserAccountUseCaseRequest): Promise<UserEntity> {
+  }: IRequest): Promise<UserEntity> {
     const checkUserID = await this.userAccountRepository.findById(id);
 
     if (checkUserID === null) {
-      throw new AppError("ID does not exist!");
+      throw new NotFoundError("ID does not exist!");
     }
 
     // const checkUsernameExists = await this.userAccountRepository.findByUsername(

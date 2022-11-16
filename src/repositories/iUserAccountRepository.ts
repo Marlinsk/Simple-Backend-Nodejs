@@ -1,4 +1,4 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../entities/User";
 import { ICreateUserAccountDTO } from "../dtos/iCreateUserAccountDTO";
 import { IUpdateUserAccountDTO } from "../dtos/iUpdateUserAccountDTO";
 

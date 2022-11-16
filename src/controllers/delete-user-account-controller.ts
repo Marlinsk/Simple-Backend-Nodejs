@@ -7,13 +7,9 @@ export class DeleteUserAccountController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    try {
-      await this.deleteUserAccountUseCase.execute(id);
-      return response.status(200).json({
-        message: "User successfully deleted from dataset",
-      });
-    } catch (error) {
-      return response.status(400).json({ error });
-    }
+    await this.deleteUserAccountUseCase.execute(id);
+    return response.status(200).json({
+      message: "User successfully deleted from dataset",
+    });
   }
 }

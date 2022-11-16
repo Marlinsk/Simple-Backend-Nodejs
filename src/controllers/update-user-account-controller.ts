@@ -8,22 +8,18 @@ export class UpdateUserAccountController {
     const { id } = request.params;
     const { completename, username, email, password } = request.body;
 
-    try {
-      const user = await this.updateUserAccountUseCase.execute({
-        id,
-        completename,
-        username,
-        email,
-        password,
+    const user = await this.updateUserAccountUseCase.execute({
+      id,
+      completename,
+      username,
+      email,
+      password,
+    });
+    return response
+      .status(200)
+      .json({
+        message: "User successfully updated in in dataset",
+        profile: user,
       });
-      return response
-        .status(200)
-        .json({
-          message: "User successfully updated in in dataset",
-          profile: user,
-        });
-    } catch (error) {
-      return response.status(400).json({ error });
-    }
   }
 }

@@ -1,10 +1,20 @@
-export class AppError {
-  public readonly message: string;
-
+export class AppError extends Error {
   public readonly statusCode: number;
 
-  constructor(message: string, statusCode = 400) {
-    this.message = message;
-    this.statusCode = statusCode;
+  constructor(message: string, statusCode: number) {
+    super(message)
+    this.statusCode = statusCode
+  }
+}
+
+export class BadRequestError extends AppError {
+  constructor(message: string) {
+    super(message, 400)
+  }
+}
+
+export class NotFoundError extends AppError {
+  constructor(message: string) {
+    super(message, 404)
   }
 }

@@ -1,6 +1,6 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../entities/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { AppError } from "../errors/AppError";
+import { NotFoundError } from "../errors/AppError";
 
 export class FindAllUsersUseCase {
   constructor(private userAccountRepository: IUserAccountRepository) { }
@@ -8,7 +8,7 @@ export class FindAllUsersUseCase {
   async execute(): Promise<UserEntity[]> {
     const findAllUsers = await this.userAccountRepository.findAllUsers();
     if (findAllUsers.length === 0) {
-      throw new AppError("No data found!");
+      throw new NotFoundError("No data found!");
     }
 
     return findAllUsers;

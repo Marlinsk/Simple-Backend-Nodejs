@@ -1,6 +1,6 @@
-import { UserEntity } from "../domain/entity/User";
+import { UserEntity } from "../entities/User";
 import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { AppError } from "../errors/AppError";
+import { NotFoundError } from "../errors/AppError";
 
 export class FindByIDUseCase {
   constructor(private userAccountRepository: IUserAccountRepository) { }
@@ -9,7 +9,7 @@ export class FindByIDUseCase {
     const checkUserID = await this.userAccountRepository.findById(id);
 
     if (checkUserID === null) {
-      throw new AppError("ID does not exist!");
+      throw new NotFoundError("ID does not exist!");
     }
     const user = await this.userAccountRepository.findById(id);
 

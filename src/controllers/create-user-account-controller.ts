@@ -7,21 +7,20 @@ export class CreateUserAccountController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { completename, username, email, password } = request.body;
 
-    try {
-      const user = await this.createUserAccountUseCase.execute({
-        completename,
-        username,
-        email,
-        password,
+    const user = await this.createUserAccountUseCase.execute({
+      completename,
+      username,
+      email,
+      password,
+    });
+
+    const { password: _, ...data } = user
+
+    return response
+      .status(201)
+      .json({
+        message: "User successfully created in dataset",
+        profile: data,
       });
-      return response
-        .status(201)
-        .json({
-          message: "User successfully created in dataset",
-          profile: user,
-        });
-    } catch (error) {
-      return response.status(400).json({ error });
-    }
   }
 }
