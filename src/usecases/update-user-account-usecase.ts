@@ -1,5 +1,5 @@
 import { UserEntity } from "../entities/User";
-import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
+import { UserAccountRepository } from "../repositories/user-account-repository";
 import { NotFoundError } from "../errors/AppError";
 import { hash } from "bcrypt";
 
@@ -12,36 +12,14 @@ interface IRequest {
 }
 
 export class UpdateUserAccountUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) { }
+  constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute({
-    id,
-    completename,
-    username,
-    email,
-    password,
-  }: IRequest): Promise<UserEntity> {
-    const checkUserID = await this.userAccountRepository.findById(id);
+  async execute({ id, completename, username, email, password }: IRequest): Promise<UserEntity> {
+    const userAlreadyExists = await this.userAccountRepository.findById(id);
 
-    if (checkUserID === null) {
+    if (!userAlreadyExists) {
       throw new NotFoundError("ID does not exist!");
     }
-
-    // const checkUsernameExists = await this.userAccountRepository.findByUsername(
-    //   username
-    // );
-
-    // const checkEmailExists = await this.userAccountRepository.findByEmail(
-    //   email
-    // );
-
-    // if (checkUsernameExists) {
-    //   throw new AppError("This username is already in use!");
-    // }
-
-    // if (checkEmailExists) {
-    //   throw new AppError("This email is already in use!");
-    // }
 
     const passwordHash = await hash(password, 8);
 

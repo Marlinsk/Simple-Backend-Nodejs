@@ -1,16 +1,16 @@
 import { UserEntity } from "../entities/User";
-import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
+import { UserAccountRepository } from "../repositories/user-account-repository";
 import { NotFoundError } from "../errors/AppError";
 
 export class FindByUsernameUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) { }
+  constructor(private userAccountRepository: UserAccountRepository) { }
 
   async execute(username: string): Promise<UserEntity | null> {
-    const checkUsernameExists = await this.userAccountRepository.findByUsername(
+    const userAlreadyExists = await this.userAccountRepository.findByUsername(
       username
     );
 
-    if (checkUsernameExists === null) {
+    if (!userAlreadyExists) {
       throw new NotFoundError("Username does not exist!");
     }
 

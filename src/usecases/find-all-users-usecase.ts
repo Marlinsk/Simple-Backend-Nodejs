@@ -1,16 +1,11 @@
 import { UserEntity } from "../entities/User";
-import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
-import { NotFoundError } from "../errors/AppError";
+import { UserAccountRepository } from "../repositories/user-account-repository";
 
 export class FindAllUsersUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) { }
+  constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute(): Promise<UserEntity[]> {
-    const findAllUsers = await this.userAccountRepository.findAllUsers();
-    if (findAllUsers.length === 0) {
-      throw new NotFoundError("No data found!");
-    }
-
-    return findAllUsers;
+  async execute(): Promise<Pick<UserEntity, 'id' | 'completename' | 'username' | 'email'>[] | null> {
+    const users = await this.userAccountRepository.findAllUsers();
+    return users;
   }
 }

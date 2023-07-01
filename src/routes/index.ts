@@ -1,13 +1,10 @@
-import { NodemailerMailAdapter } from "src/adapters/nodemailer/nodemailer-mail-adapter";
-import { PrismaUserAccountRepository } from "src/repositories/implementations/prisma-user-account-repository";
-
-import { CreateUserAccountController, UpdateUserAccountController, FindAllUsersController, FindByIDController, FindByUsernameController, DeleteUserAccountController } from "src/controllers";
-import { CreateUserAccountUseCase, UpdateUserAccountUseCase, DeleteUserAccountUseCase, FindAllUsersUseCase, FindByIDUseCase, FindByUsernameUseCase } from "src/usecases";
+import { PrismaUserAccountRepository } from "../repositories/implementations/prisma-user-account-repository";
+import { CreateUserAccountController, UpdateUserAccountController, FindAllUsersController, FindByIDController, FindByUsernameController, DeleteUserAccountController } from "../controllers";
+import { CreateUserAccountUseCase, UpdateUserAccountUseCase, DeleteUserAccountUseCase, FindAllUsersUseCase, FindByIDUseCase, FindByUsernameUseCase } from "../usecases";
 
 const prismaUserAccountRepository = new PrismaUserAccountRepository();
-const nodemailerMailAdapter = new NodemailerMailAdapter();
 
-const createUserAccountUseCase = new CreateUserAccountUseCase(prismaUserAccountRepository, nodemailerMailAdapter);
+const createUserAccountUseCase = new CreateUserAccountUseCase(prismaUserAccountRepository);
 const createUserAccountController = new CreateUserAccountController(createUserAccountUseCase);
 
 const updateUserAccountUseCase = new UpdateUserAccountUseCase(prismaUserAccountRepository);

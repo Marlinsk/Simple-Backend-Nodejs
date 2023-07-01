@@ -1,6 +1,4 @@
-import { User } from "@prisma/client";
-
-export class UserEntity implements User {
+export class UserEntity {
   readonly id: string;
   completename: string;
   username: string;

@@ -1,13 +1,13 @@
-import { IUserAccountRepository } from "../repositories/iUserAccountRepository";
+import { UserAccountRepository } from "../repositories/user-account-repository";
 import { NotFoundError } from "../errors/AppError";
 
 export class DeleteUserAccountUseCase {
-  constructor(private userAccountRepository: IUserAccountRepository) { }
+  constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute(id: string) {
-    const checkUserID = await this.userAccountRepository.findById(id);
+  async execute(id: string): Promise<void> {
+    const userAlreadyExists = await this.userAccountRepository.findById(id);
 
-    if (checkUserID === null) {
+    if (!userAlreadyExists) {
       throw new NotFoundError("ID does not exist in the database!");
     }
 

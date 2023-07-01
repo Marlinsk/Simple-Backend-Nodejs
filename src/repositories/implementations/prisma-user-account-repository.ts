@@ -1,16 +1,11 @@
 import { UserEntity } from "../../entities/User";
 import { prisma } from "../../prisma";
 import { ICreateUserAccountDTO } from "../../dtos/iCreateUserAccountDTO";
-import { IUserAccountRepository } from "../iUserAccountRepository";
+import { UserAccountRepository } from "../user-account-repository";
 import { IUpdateUserAccountDTO } from "../../dtos/iUpdateUserAccountDTO";
 
-export class PrismaUserAccountRepository implements IUserAccountRepository {
-  async create({
-    completename,
-    username,
-    email,
-    password,
-  }: ICreateUserAccountDTO): Promise<UserEntity> {
+export class PrismaUserAccountRepository implements UserAccountRepository {
+  async create({ completename, username, email, password }: ICreateUserAccountDTO): Promise<UserEntity> {
     return await prisma.user.create({
       data: {
         completename,
@@ -21,13 +16,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async update({
-    id,
-    completename,
-    username,
-    email,
-    password,
-  }: IUpdateUserAccountDTO): Promise<UserEntity> {
+  async update({ id, completename, username, email, password }: IUpdateUserAccountDTO): Promise<UserEntity> {
     return await prisma.user.update({
       where: {
         id,
@@ -41,7 +30,7 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async delete(id: string) {
+  async delete(id: string): Promise<void> {
     await prisma.user.delete({
       where: {
         id,
@@ -49,8 +38,22 @@ export class PrismaUserAccountRepository implements IUserAccountRepository {
     });
   }
 
-  async findAllUsers(): Promise<UserEntity[]> {
-    return await prisma.user.findMany();
+  async findAllUsers(): Promise<Pick<UserEntity, 'id' | 'completename' | 'username' | 'email'>[] | null> {
+    const users = await prisma.user.findMany({ 
+      select: {
+        id: true,
+        completename: true,
+        username: true,
+        email: true,
+        password: false
+      }
+    });
+
+    if(!users) {
+      return null;
+    }
+
+    return users;
   }
 
   async findById(id: string): Promise<UserEntity | null> {
