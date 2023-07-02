@@ -15,11 +15,7 @@ export class UpdateUserAccountController {
       email,
       password,
     });
-    return response
-      .status(200)
-      .json({
-        message: "User successfully updated in in dataset",
-        profile: user,
-      });
+    
+    return response.status(200).json(user);
   }
 }

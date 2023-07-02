@@ -16,11 +16,6 @@ export class CreateUserAccountController {
 
     const { password: _, ...data } = user
 
-    return response
-      .status(201)
-      .json({
-        message: "User successfully created in dataset",
-        profile: data,
-      });
+    return response.status(201).json(data);
   }
 }

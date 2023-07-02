@@ -1,4 +1,4 @@
-import { UserEntity } from "../entities/User";
+import { User } from "../entities/User";
 import { UserAccountRepository } from "../repositories/user-account-repository";
 import { NotFoundError } from "../errors/AppError";
 import { hash } from "bcrypt";
@@ -14,7 +14,7 @@ interface IRequest {
 export class UpdateUserAccountUseCase {
   constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute({ id, completename, username, email, password }: IRequest): Promise<UserEntity> {
+  async execute({ id, completename, username, email, password }: IRequest): Promise<User> {
     const userAlreadyExists = await this.userAccountRepository.findById(id);
 
     if (!userAlreadyExists) {

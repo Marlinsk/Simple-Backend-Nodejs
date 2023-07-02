@@ -1,7 +1,7 @@
 import { UserAccountRepository } from "../repositories/user-account-repository";
 import { BadRequestError } from "../errors/AppError";
 import { hash } from "bcrypt";
-import { UserEntity } from "../entities/User";
+import { User } from "../entities/User";
 
 interface IRequest {
   completename: string;
@@ -13,14 +13,9 @@ interface IRequest {
 export class CreateUserAccountUseCase {
   constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute({ completename, username, email, password }: IRequest): Promise<UserEntity> {
-    const checkUsernameExists = await this.userAccountRepository.findByUsername(
-      username
-    );
-
-    const checkEmailExists = await this.userAccountRepository.findByEmail(
-      email
-    );
+  async execute({ completename, username, email, password }: IRequest): Promise<User> {
+    const checkUsernameExists = await this.userAccountRepository.findByUsername(username);
+    const checkEmailExists = await this.userAccountRepository.findByEmail(email);
 
     if (checkUsernameExists) {
       throw new BadRequestError("This username is already in use!");

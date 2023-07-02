@@ -1,8 +1,11 @@
 import { PrismaUserAccountRepository } from "../repositories/implementations/prisma-user-account-repository";
-import { CreateUserAccountController, UpdateUserAccountController, FindAllUsersController, FindByIDController, FindByUsernameController, DeleteUserAccountController } from "../controllers";
-import { CreateUserAccountUseCase, UpdateUserAccountUseCase, DeleteUserAccountUseCase, FindAllUsersUseCase, FindByIDUseCase, FindByUsernameUseCase } from "../usecases";
+import { CreateUserAccountController, UpdateUserAccountController, FindAllUsersController, FindByIDController, DeleteUserAccountController, AuthenticateController } from "../controllers";
+import { CreateUserAccountUseCase, UpdateUserAccountUseCase, DeleteUserAccountUseCase, FindAllUsersUseCase, FindByIDUseCase, AuthenticateUseCase } from "../usecases";
 
 const prismaUserAccountRepository = new PrismaUserAccountRepository();
+
+const authenticateUseCase = new AuthenticateUseCase(prismaUserAccountRepository);
+const authenticateController = new AuthenticateController(authenticateUseCase);
 
 const createUserAccountUseCase = new CreateUserAccountUseCase(prismaUserAccountRepository);
 const createUserAccountController = new CreateUserAccountController(createUserAccountUseCase);
@@ -19,20 +22,11 @@ const findAllUsersController = new FindAllUsersController(findAllUsersUseCase);
 const findByIDUseCase = new FindByIDUseCase(prismaUserAccountRepository);
 const findByIDController = new FindByIDController(findByIDUseCase);
 
-const findByUsernameUseCase = new FindByUsernameUseCase(prismaUserAccountRepository);
-const findByUsernameController = new FindByUsernameController(findByUsernameUseCase);
-
 export {
-  createUserAccountUseCase,
+  authenticateController,
   createUserAccountController,
-  updateUserAccountUseCase,
   updateUserAccountController,
-  deleteUserAccountUseCase,
   deleteUserAccountController,
-  findAllUsersUseCase,
   findAllUsersController,
-  findByIDUseCase,
-  findByIDController,
-  findByUsernameUseCase,
-  findByUsernameController
+  findByIDController
 }
