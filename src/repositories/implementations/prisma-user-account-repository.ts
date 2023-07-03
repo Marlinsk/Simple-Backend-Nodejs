@@ -5,10 +5,10 @@ import { UserAccountRepository } from "../user-account-repository";
 import { IUpdateUserAccountDTO } from "../../dtos/iUpdateUserAccountDTO";
 
 export class PrismaUserAccountRepository implements UserAccountRepository {
-  async create({ completename, username, email, password }: ICreateUserAccountDTO): Promise<User> {
+  async create({ name, username, email, password }: ICreateUserAccountDTO): Promise<User> {
     return await prisma.user.create({
       data: {
-        completename,
+        name,
         username,
         email,
         password,
@@ -16,13 +16,13 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
     });
   }
 
-  async update({ id, completename, username, email, password }: IUpdateUserAccountDTO): Promise<User> {
+  async update({ id, name, username, email, password }: IUpdateUserAccountDTO): Promise<User> {
     return await prisma.user.update({
       where: {
         id,
       },
       data: {
-        completename,
+        name,
         username,
         email,
         password,
@@ -38,11 +38,11 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
     });
   }
 
-  async findAllUsers(): Promise<Pick<User, 'id' | 'completename' | 'username' | 'email'>[] | null> {
+  async findAllUsers(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null> {
     const users = await prisma.user.findMany({ 
       select: {
         id: true,
-        completename: true,
+        name: true,
         username: true,
         email: true,
         password: false

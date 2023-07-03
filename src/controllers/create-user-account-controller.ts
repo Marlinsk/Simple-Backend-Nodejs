@@ -5,10 +5,10 @@ export class CreateUserAccountController {
   constructor(private createUserAccountUseCase: CreateUserAccountUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { completename, username, email, password } = request.body;
+    const { name, username, email, password } = request.body;
 
     const user = await this.createUserAccountUseCase.execute({
-      completename,
+      name,
       username,
       email,
       password,

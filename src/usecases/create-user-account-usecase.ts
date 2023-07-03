@@ -4,7 +4,7 @@ import { hash } from "bcrypt";
 import { User } from "../entities/User";
 
 interface IRequest {
-  completename: string;
+  name: string;
   username: string;
   email: string;
   password: string;
@@ -13,7 +13,7 @@ interface IRequest {
 export class CreateUserAccountUseCase {
   constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute({ completename, username, email, password }: IRequest): Promise<User> {
+  async execute({ name, username, email, password }: IRequest): Promise<User> {
     const checkUsernameExists = await this.userAccountRepository.findByUsername(username);
     const checkEmailExists = await this.userAccountRepository.findByEmail(email);
 
@@ -28,7 +28,7 @@ export class CreateUserAccountUseCase {
     const passwordHash = await hash(password, 8);
 
     const createUser = await this.userAccountRepository.create({
-      completename,
+      name,
       username,
       email,
       password: passwordHash,

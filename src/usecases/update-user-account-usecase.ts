@@ -5,7 +5,7 @@ import { hash } from "bcrypt";
 
 interface IRequest {
   id: string;
-  completename: string;
+  name: string;
   username: string;
   email: string;
   password: string;
@@ -14,7 +14,7 @@ interface IRequest {
 export class UpdateUserAccountUseCase {
   constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute({ id, completename, username, email, password }: IRequest): Promise<User> {
+  async execute({ id, name, username, email, password }: IRequest): Promise<User> {
     const userAlreadyExists = await this.userAccountRepository.findById(id);
 
     if (!userAlreadyExists) {
@@ -25,7 +25,7 @@ export class UpdateUserAccountUseCase {
 
     const updateUser = await this.userAccountRepository.update({
       id,
-      completename,
+      name,
       username,
       email,
       password: passwordHash,

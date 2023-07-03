@@ -3,7 +3,7 @@ import { ICreateUserAccountDTO } from "../dtos/iCreateUserAccountDTO";
 import { IUpdateUserAccountDTO } from "../dtos/iUpdateUserAccountDTO";
 
 export interface UserAccountRepository {
-  findAllUsers(): Promise<Pick<User, 'id' | 'completename' | 'username' | 'email'>[] | null>;
+  findAllUsers(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null>;
   findById(id: string): Promise<User | null>;
   findByUsername(username: string): Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;

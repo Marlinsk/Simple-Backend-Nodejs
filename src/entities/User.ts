@@ -1,6 +1,6 @@
 export class User {
   readonly id: string;
-  completename: string;
+  name: string;
   username: string;
   email: string;
   password: string;

@@ -53,7 +53,7 @@ export class AuthenticateUseCase {
       token: token, 
       user: {
         id: userAlreadyExists.id,
-        name: userAlreadyExists.completename,
+        name: userAlreadyExists.name,
         username: userAlreadyExists.username,
         email: userAlreadyExists.email,
       }, 
