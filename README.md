@@ -107,7 +107,6 @@ Efetua o login do usuário ao passar o email e senha no body da requisição
 
 **Exemplo de corpo da requisição:**
 ```
-
 {
     "email": "andhaskell@gmail.com",
     "password": "095wtjih0-o0r8tg9ubgj"
