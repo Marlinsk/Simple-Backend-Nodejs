@@ -1,4 +1,4 @@
-# <img src="https://github.com/Marlinsk/simple-backend-node/blob/main/.github/key.png" width="48px" height="48px"> Projeto de autenticação utilizando JWT e refresh token
+# <img src="https://github.com/Marlinsk/simple-backend-node/blob/main/.github/key.png" width="48px" height="48px"> Autenticação de usuário utilizando JWT e refresh token
 Back-end de autenticação de usuário feito de uma forma simples, para desenolvimento de conhecimento prático de autenticação com jwt e refresh token.
 
 ## Descrição
