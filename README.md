@@ -7,7 +7,7 @@ Este projeto foi desenvolvido para servir como uma mini-referência das tecnolog
 **Aviso:** Não use 100% da lógica deste projeto para utilizar em aplicações grandes, avalie se a lógica dentro deste projeto se enquadra dentro do que você procura resolver, e busque sempre melhorar e aprimorar tudo dentro do possível, não apenas cópie e cole.
 
 ## Configurando o projeto em sua máquina
-Comando para clonar o projeto em sua máquina
+Comando para clonar o projeto em sua máquina.
 ```
 git clone https://github.com/Marlinsk/simple-backend.git
 ```
@@ -20,33 +20,33 @@ JWT_SECRET="sua chave"
 **Obs.:** O valor da variável **JWT_SECRET** pode ser qualquer um, podendo ser um hash ou um conjunto de caracteres.
 
 ## Instalando as dependências da aplicação
-Instalando as dependências com o comando **npm**
+Instalando as dependências com o comando **npm.**
 ```
 npm i
 ```
 
-Instalando as dependências com **yarn**
+Instalando as dependências com **yarn.**
 ```
 yarn
 ```
 
 ## 🚀 Pondo a aplicação para rodar
-Para executar a aplicação em modo **dev** localmente utilizando o comando **npm** rode o seguinte comando
+Para executar a aplicação em modo **dev** localmente utilizando o comando **npm** rode o seguinte comando.
 ```
 npm run dev
 ```
-Se quiser rodar utilizando o **yarn**
+Se quiser rodar utilizando o **yarn.**
 ```
 yarn dev
 ```
-> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:5500
+> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:5500.
 
 ## 🏦 Acessando o editor do banco de dados
 Para acessar o banco de dados pode ser acessado por qualquer gerenciador. O prisma torna a tarefa de acessar o banco de dados para modificar seus dados um coisa simples, basta digitar o seguinte comando do **npm** para poder acessá-lo via web.
 ```
 npx prisma studio
 ```
-Para acessar o prisma studio utilizando o **yarn** basta digitar no terminal
+Para acessar o prisma studio utilizando o **yarn** basta digitar no terminal.
 ```
 yarn prisma studio
 ```
