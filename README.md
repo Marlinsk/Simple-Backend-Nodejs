@@ -19,7 +19,7 @@ JWT_SECRET="sua chave"
 ```
 **Obs.:** O valor da variável **JWT_SECRET** pode ser qualquer um, podendo ser um hash ou um conjunto de caracteres.
 
-### Instalando as dependências da aplicação
+## Instalando as dependências da aplicação
 Instalando as dependências com o comando **npm**
 ```
 npm i
@@ -29,3 +29,26 @@ Instalando as dependências com **yarn**
 ```
 yarn
 ```
+
+## 🚀 Pondo a aplicação para rodar
+Para executar a aplicação em modo **dev** localmente utilizando o comando **npm** rode o seguinte comando
+```
+npm run dev
+```
+Se quiser rodar utilizando o **yarn**
+```
+yarn dev
+```
+> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:5500
+
+## 🏦 Acessando o editor do banco de dados
+Para acessar o banco de dados pode ser acessado por qualquer gerenciador. O prisma torna a tarefa de acessar o banco de dados para modificar seus dados um coisa simples, basta digitar o seguinte comando do **npm** para poder acessá-lo via web.
+```
+npx prisma studio
+```
+Para acessar o prisma studio utilizando o **yarn** basta digitar no terminal
+```
+yarn prisma studio
+```
+
+ 
