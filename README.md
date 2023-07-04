@@ -1,4 +1,4 @@
-# <img src="https://github.com/Marlinsk/simple-backend-node/blob/main/.github/key.png" width="48px" height="48px"> Aplicação back-end de autenticação de usuário
+# <img src="https://github.com/Marlinsk/simple-backend-node/blob/main/.github/key.png" width="48px" height="48px"> Aplicação back-end de autenticação simples
 Back-end de autenticação de usuário feito de uma forma simples, para desenolvimento de conhecimento prático de autenticação com JWT.
 
 ## Descrição
