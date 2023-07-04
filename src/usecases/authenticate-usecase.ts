@@ -18,7 +18,6 @@ interface IRequest {
 }
 
 interface IResponse {
-  user: UserResponse;
   token: string;
 }
 
@@ -49,14 +48,6 @@ export class AuthenticateUseCase {
       expiresIn,
     })
 
-    return { 
-      token: token, 
-      user: {
-        id: userAlreadyExists.id,
-        name: userAlreadyExists.name,
-        username: userAlreadyExists.username,
-        email: userAlreadyExists.email,
-      }, 
-    }
+    return { token: token }
   }
 }
