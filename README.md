@@ -12,7 +12,7 @@ Comando para clonar o projeto em sua máquina
 git clone https://github.com/Marlinsk/simple-backend.git
 ```
 
-Após clonar o projeto crie antes de instalar as dependências da aplicação, crie um arquivo **.env** fora da pasta src e insira as seguintes variáveis.
+Após clonar o projeto crie antes de instalar as dependências da aplicação, crie um arquivo **.env** fora da pasta **src** e insira as seguintes variáveis.
 ```
 DATABASE_URL="file:./dev.db"
 JWT_SECRET="sua chave"
