@@ -12,7 +12,7 @@ app.use(json());
 app.use(cors());
 
 app.use(routes);
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 app.listen(port, () => {
   console.log(`Server starting 🚀 http://localhost:${port}`);

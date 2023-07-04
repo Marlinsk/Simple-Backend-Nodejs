@@ -10,9 +10,5 @@ export function errorMiddleware(
   const statusCode = error.statusCode ?? 500;
   const message = error.statusCode ? error.message : "Internal Server Error";
   
-  try {
-    return next()
-  } catch (error) {
-    return response.status(statusCode).json({ error: { problem: message } })
-  }
+  return response.status(statusCode).json({ error: { problem: message } })
 }
