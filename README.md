@@ -52,7 +52,7 @@ Listar todas as contas de usuário
 
 **GET** Obter pelo ID:
 
-Pega o usuário do banco a usando o id dele
+Pega o usuário do banco a usando o id dele. Para efetuar a requisição, passe o ID do usuário na URL da requisição.
 
 > /:id
 
@@ -95,7 +95,7 @@ Para editar um usuário utilizando o postman ou outra ferramenta de requisição
 
 **DELETE** Excluí um usuário:
 
-Exclui um registro de um usuário do banco de dados
+Exclui um registro de um usuário do banco de dados. Para efetuar a requisição, passe o ID do usuário na URL da requisição.
 
 > /:id
 
