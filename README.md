@@ -4,16 +4,6 @@ Simple back-end, developed with good practices and technologies focused on the R
 ## Description
 This Back-end project was developed to serve as a practical mini-reference of the technologies implemented in its development.
 
-### Technologies implemented in this project:
-- nodejs
-- typescript
-- ts-node-dev
-- express
-- prisma
-- SQLite
-- cors
-- bcrypt 
-
 ## Cloning repository
 Command to clone the application in your development environment
 ```bash
