@@ -5,7 +5,7 @@ import { ensureAuthenticatedMiddleware } from "../middleware/ensure-authenticate
 export const routes = express.Router();
 
 routes.get("/", ensureAuthenticatedMiddleware, async (request, response) => {
-  return findAllUsersController.handle(request, response);
+  return await findAllUsersController.handle(request, response);
 });
 
 routes.get("/:id", ensureAuthenticatedMiddleware, async (request, response) => {
