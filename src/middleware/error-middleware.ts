@@ -1,5 +1,5 @@
+import { AppError } from "@errors/AppError";
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "../errors/AppError";
 
 export function errorMiddleware(
   error: Error & Partial<AppError>,

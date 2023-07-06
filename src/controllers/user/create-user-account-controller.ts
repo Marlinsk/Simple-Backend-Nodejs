@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUserAccountUseCase } from "../usecases";
+import { CreateUserAccountUseCase } from "@usecases/user/create-user-account-usecase";
 
 export class CreateUserAccountController {
   constructor(private createUserAccountUseCase: CreateUserAccountUseCase) { }
@@ -14,8 +14,6 @@ export class CreateUserAccountController {
       password,
     });
 
-    const { password: _, ...data } = user
-
-    return response.status(201).json(data);
+    return response.status(201).json(user);
   }
 }

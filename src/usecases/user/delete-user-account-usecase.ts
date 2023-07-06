@@ -1,5 +1,6 @@
-import { UserAccountRepository } from "../repositories/user-account-repository";
-import { NotFoundError } from "../errors/AppError";
+import { NotFoundError } from "@errors/AppError";
+import { UserAccountRepository } from "@repositories/user-account-repository";
+
 
 export class DeleteUserAccountUseCase {
   constructor(private userAccountRepository: UserAccountRepository) { }

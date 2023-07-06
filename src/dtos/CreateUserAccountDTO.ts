@@ -1,4 +1,4 @@
-export interface ICreateUserAccountDTO {
+export class CreateUserAccountDTO {
   name: string;
   username: string;
   email: string;

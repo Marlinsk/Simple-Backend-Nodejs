@@ -1,6 +1,6 @@
 import express, { request, response, Router } from "express";
-import { createUserAccountController, updateUserAccountController, deleteUserAccountController, findAllUsersController, findByIDController, authenticateController } from ".";
-import { ensureAuthenticatedMiddleware } from "../middleware/ensure-authenticated-middleware";
+import { createUserAccountController, updateUserAccountController, deleteUserAccountController, findAllUsersController, findByIDController, authenticateController, refreshTokenUserController } from ".";
+import { ensureAuthenticatedMiddleware } from "@middleware/ensure-authenticated-middleware";
 
 export const routes = express.Router();
 
@@ -26,4 +26,8 @@ routes.delete("/:id", ensureAuthenticatedMiddleware, async (request, response) =
 
 routes.post("/login", async (request, response) => {
   return await authenticateController.handle(request, response);
-})
+});
+
+routes.post("/refresh-token", async (request, response) => {
+  return await refreshTokenUserController.handle(request, response);
+});

@@ -1,19 +1,17 @@
-import { UserAccountRepository } from "../repositories/user-account-repository";
-import { BadRequestError } from "../errors/AppError";
 import { hash } from "bcrypt";
-import { User } from "../entities/User";
+import { User } from "@entities/User";
+import { BadRequestError } from "@errors/AppError";
+import { CreateUserAccountDTO } from "@dtos/CreateUserAccountDTO";
+import { UserAccountRepository } from "@repositories/user-account-repository";
 
-interface IRequest {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
+type CreateUserAccountUseCaseResponse = {
+  userProfile: User;
 }
 
 export class CreateUserAccountUseCase {
   constructor(private userAccountRepository: UserAccountRepository) { }
 
-  async execute({ name, username, email, password }: IRequest): Promise<User> {
+  async execute({ name, username, email, password }: CreateUserAccountDTO): Promise<CreateUserAccountUseCaseResponse> {
     const checkUsernameExists = await this.userAccountRepository.findByUsername(username);
     const checkEmailExists = await this.userAccountRepository.findByEmail(email);
 
@@ -34,6 +32,6 @@ export class CreateUserAccountUseCase {
       password: passwordHash,
     });
 
-    return createUser;
+    return { userProfile: createUser };
   }
 }

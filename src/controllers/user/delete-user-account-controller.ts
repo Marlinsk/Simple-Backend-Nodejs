@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { DeleteUserAccountUseCase } from "../usecases";
+import { DeleteUserAccountUseCase } from "@usecases/user/delete-user-account-usecase";
 
 export class DeleteUserAccountController {
-  constructor(private deleteUserAccountUseCase: DeleteUserAccountUseCase) { }
+  constructor(private readonly deleteUserAccountUseCase: DeleteUserAccountUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;

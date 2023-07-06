@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { FindByIDUseCase } from "../usecases";
+import { FindByIDUseCase } from "@usecases/user/find-by-id-usecase";
 
 export class FindByIDController {
-  constructor(private findByIDUseCase: FindByIDUseCase) { }
+  constructor(private readonly findByIDUseCase: FindByIDUseCase) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;

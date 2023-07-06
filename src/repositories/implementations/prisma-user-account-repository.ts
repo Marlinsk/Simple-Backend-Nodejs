@@ -1,11 +1,11 @@
-import { User } from "../../entities/User";
-import { prisma } from "../../prisma/PrismaClient";
-import { ICreateUserAccountDTO } from "../../dtos/iCreateUserAccountDTO";
+import { User } from "@entities/User";
+import { prisma } from "@prisma-client/PrismaClient";
+import { CreateUserAccountDTO } from "@dtos/CreateUserAccountDTO";
+import { UpdateUserAccountDTO } from "@dtos/UpdateUserAccountDTO";
 import { UserAccountRepository } from "../user-account-repository";
-import { IUpdateUserAccountDTO } from "../../dtos/iUpdateUserAccountDTO";
 
 export class PrismaUserAccountRepository implements UserAccountRepository {
-  async create({ name, username, email, password }: ICreateUserAccountDTO): Promise<User> {
+  async create({ name, username, email, password }: CreateUserAccountDTO): Promise<User> {
     return await prisma.user.create({
       data: {
         name,
@@ -16,7 +16,7 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
     });
   }
 
-  async update({ id, name, username, email, password }: IUpdateUserAccountDTO): Promise<User> {
+  async update({ id, name, username, email, password }: UpdateUserAccountDTO): Promise<User> {
     return await prisma.user.update({
       where: {
         id,
@@ -38,7 +38,7 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
     });
   }
 
-  async findAllUsers(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null> {
+  async findAll(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null> {
     const users = await prisma.user.findMany({ 
       select: {
         id: true,
@@ -71,7 +71,7 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
   }
 
   async findByUsername(username: string): Promise<User | null> {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: {
         username,
       },
@@ -85,7 +85,7 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: {
         email,
       },

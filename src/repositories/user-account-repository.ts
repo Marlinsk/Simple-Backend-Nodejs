@@ -1,13 +1,14 @@
-import { User } from "../entities/User";
-import { ICreateUserAccountDTO } from "../dtos/iCreateUserAccountDTO";
-import { IUpdateUserAccountDTO } from "../dtos/iUpdateUserAccountDTO";
+import { User } from "@entities/User";
+import { CreateUserAccountDTO } from "@dtos/CreateUserAccountDTO";
+import { UpdateUserAccountDTO } from "@dtos/UpdateUserAccountDTO";
+
 
 export interface UserAccountRepository {
-  findAllUsers(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null>;
+  findAll(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null>;
   findById(id: string): Promise<User | null>;
   findByUsername(username: string): Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;
-  create(data: ICreateUserAccountDTO): Promise<User>;
-  update(data: IUpdateUserAccountDTO): Promise<User>;
+  create(data: CreateUserAccountDTO): Promise<User>;
+  update(data: UpdateUserAccountDTO): Promise<User>;
   delete(id: string): Promise<void>;
 }
