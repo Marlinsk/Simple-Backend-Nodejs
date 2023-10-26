@@ -1,70 +1,62 @@
-# <img src="https://github.com/Marlinsk/node-authentication-backend/blob/main/.github/key.png" width="48px" height="48px"> Aplicação Back-end Node de Autenticação
-Back-end de autenticação de usuário feito de uma forma simples, para desenolvimento de conhecimento prático de autenticação com JWT.
+# <img src="https://github.com/Marlinsk/node-authentication-backend/blob/main/.github/key.png" width="48px" height="48px"> Node Authentication Backend Application
+A user authentication backend developed in a straightforward manner to gain practical knowledge of JWT-based authentication.
 
-## Descrição
-Este projeto foi desenvolvido para servir como uma mini-referência das tecnologias implementadas ao logo de seu desenvolvimento. Boa parte delas foram implementadas no código de uma forma simples, podendo sofrer melhorias de contribuintes de toda a comunidade.
+## Description
+This project was developed to serve as a mini-reference for the technologies implemented throughout its development. Many of them were implemented in a simple way in the code and can be improved by contributors from the community.
 
-**Aviso:** Não use 100% da lógica deste projeto para utilizar em aplicações grandes, avalie se a lógica dentro deste projeto se enquadra dentro do que você procura resolver, e busque sempre melhorar e aprimorar tudo dentro do possível, não apenas cópie e cole.
+**Note:** Do not use 100% of the logic from this project for larger applications. Evaluate whether the logic within this project aligns with what you seek to address, and always strive to improve and enhance everything within your reach, rather than simply copying and pasting.
 
-## Configurando o projeto em sua máquina
-Comando para clonar o projeto em sua máquina.
+## Setting up the Project on Your Machine
+Command to clone the project to your machine.
 ```
-git clone https://github.com/Marlinsk/simple-backend.git
+git clone https://github.com/Marlinsk/node-authentication-backend.git
 ```
 
-Após clonar o projeto crie antes de instalar as dependências da aplicação, crie um arquivo **.env** fora da pasta **src** e insira as seguintes variáveis.
+After cloning the project, before installing the application's dependencies, create a **.env** file outside the **src folder** and add the **following variables**.
 ```
 DATABASE_URL="file:./dev.db"
-JWT_SECRET="sua chave"
+JWT_SECRET="your key"
 ```
-**Obs.:** O valor da variável **JWT_SECRET** pode ser qualquer um, podendo ser um hash ou um conjunto de caracteres.
+**Note:** The value of the **JWT_SECRET** variable can be any, whether it's a hash or a set of characters.
 
-## Instalando as dependências da aplicação
-Instalando as dependências com o comando **npm.**
+## Installing Application Dependencies
+Install the dependencies using the **npm** command.
 ```
 npm i
 ```
 
-Instalando as dependências com **yarn.**
-```
-yarn
-```
-
-## 🚀 Pondo a aplicação para rodar
-Para executar a aplicação em modo **dev** localmente utilizando o comando **npm** rode o seguinte comando.
+## 🚀 Running the Application
+To run the application locally in **dev** mode using the **npm** command, execute the following command.
 ```
 npm run dev
 ```
-Se quiser rodar utilizando o **yarn.**
-```
-yarn dev
-```
-> Se estiver tudo ok aparecerá a seguinte mensagem no terminal: Server starting 🚀 http://localhost:5500.
 
-## 🚏 Rotas HTTP da aplicação
-Descrição da funcionalidade de cada rota http presente no back-end.
+> If everything is fine, you will see the following message in the terminal: Server starting 🚀 http://localhost:5500.
 
-**GET** Lista: 
+## 🚏 Application's HTTP Routes
+Description of the functionality of each HTTP route in the backend.
 
-Listar todas as contas de usuário
+**GET** List: 
+
+List all user accounts.
 
 > / 
 
-**GET** Obter pelo ID:
+**GET** Get by ID:
 
-Pega o usuário do banco a usando o id dele. Para efetuar a requisição, passe o ID do usuário na URL da requisição.
+Retrieve a user from the database using their ID. To make the request, include the user's ID in the URL of the request.
 
 > /:id
 
-**POST** Criar usuário:
+**POST** Create User:
 
-Cria um a conta de um usuário
+Create a user account.
 
 > /
 
-Para criar um usuário utilizando o postman ou outra ferramenta de requisição HTTP, cópie este exemplo abaixo e faça a requisição para criar o usuário.
+To create a user using Postman or another HTTP request tool, copy the example below and make the request to create the user.
 
-**Exemplo de corpo da requisição:**
+**Example request body:**
 ```
 {
     "name": "Andre Haskell",
@@ -74,15 +66,15 @@ Para criar um usuário utilizando o postman ou outra ferramenta de requisição 
 }
 ```
 
-**PUT** Editar usuário:
+**PUT** Edit User:
 
-Edita os dados da conta de usuário
+Edit user account details.
 
 > /:id
 
-Para editar um usuário utilizando o postman ou outra ferramenta de requisição HTTP, passe o id junto do corpo da requisição junto com os dados modificados.
+To edit a user using Postman or another HTTP request tool, include the ID in the request body along with the modified data.
 
-**Exemplo de corpo da requisição:**
+**Example request body:**
 ```
 {
     "id": "consulte no banco",
@@ -93,19 +85,19 @@ Para editar um usuário utilizando o postman ou outra ferramenta de requisição
 }
 ```
 
-**DELETE** Excluí um usuário:
+**DELETE** Delete a User:
 
-Exclui um registro de um usuário do banco de dados. Para efetuar a requisição, passe o ID do usuário na URL da requisição.
+Delete a user record from the database. To make the request, include the user's ID in the request URL.
 
 > /:id
 
 **POST** Login:
 
-Efetua o login do usuário ao passar o email e senha no body da requisição
+Perform user login by passing the email and password in the request body.
 
 > /login
 
-**Exemplo de corpo da requisição:**
+**Example request body:**
 ```
 {
     "email": "andhaskell@gmail.com",
@@ -113,14 +105,8 @@ Efetua o login do usuário ao passar o email e senha no body da requisição
 }
 ```
 
-## 🏦 Acessando o editor do banco de dados
-Para acessar o banco de dados pode ser acessado por qualquer gerenciador. O prisma torna a tarefa de acessar o banco de dados para modificar seus dados um coisa simples, basta digitar o seguinte comando do **npm** para poder acessá-lo via web.
+## 🏦 Accessing the Database Editor
+The database can be accessed using any database management tool. Prisma makes the task of accessing the database to modify its data simple. Just type the following **npm** command to access it via the web.
 ```
 npx prisma studio
 ```
-Para acessar o prisma studio utilizando o **yarn** basta digitar no terminal.
-```
-yarn prisma studio
-```
-
- 
