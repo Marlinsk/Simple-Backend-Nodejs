@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AuthenticateUseCase } from "@usecases/authentication/authenticate-usecase";
+import { AuthenticateUseCase } from "@usecases/authenticate-usecase";
 
 export class AuthenticateController {
   constructor(private readonly authenticateUseCase: AuthenticateUseCase) {}
