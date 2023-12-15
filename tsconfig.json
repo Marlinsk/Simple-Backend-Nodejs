@@ -23,7 +23,7 @@
       "@dtos/*": ["./src/dtos/*"],
       "@entities/*": ["./src/entities/*"],
       "@errors/*": ["./src/errors/*"],
-      "@middleware/*": ["./src/middleware/*"],
+      "@middleware/*": ["src/middlewares/*"],
       "@prisma-client/*": ["./src/prisma/*"],
       "@providers/*": ["./src/providers/*"],
       "@repositories/*": ["./src/repositories/*"],

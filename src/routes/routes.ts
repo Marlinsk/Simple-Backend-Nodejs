@@ -1,6 +1,6 @@
 import express, { request, response, Router } from "express";
 import { createUserAccountController, updateUserAccountController, deleteUserAccountController, findAllUsersController, findByIDController, authenticateController, refreshTokenUserController } from ".";
-import { getToken } from "@middleware/GetToken";
+import { getToken } from "src/middlewares/GetToken";
 
 export const routes = express.Router();
 
