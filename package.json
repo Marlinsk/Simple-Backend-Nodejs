@@ -2,11 +2,11 @@
   "name": "node-authentication-backend",
   "version": "1.0.0",
   "description": "Backend application developed using nodejs, typescript, ts-node-dev, express, cors, PrismaORM, SQLite.",
-  "main": "index.ts",
+  "main": "main.ts",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts"
+    "start": "node dist/main.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/main.ts"
   },
   "author": "Marlinsk",
   "license": "MIT",
