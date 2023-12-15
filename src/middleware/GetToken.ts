@@ -3,7 +3,7 @@ import { verify } from "jsonwebtoken";
 import authConfig from "../config/auth" 
 import "dotenv/config";
 
-export function ensureAuthenticatedMiddleware(request: Request, response: Response, next: NextFunction) {
+export function getToken(request: Request, response: Response, next: NextFunction) {
   const authToken = request.headers.authorization;
   const { secret } = authConfig.jwt
 

@@ -1,14 +1,15 @@
 import "dotenv/config";
 import { sign } from "jsonwebtoken";
 import authConfig from "@config/auth";
-import { BadRequestError } from "@errors/AppError";
+import { AppError } from "@errors/AppError";
+import { BAD_REQUEST } from "src/constants/http-status";
 
 export class GenereateTokenProvider {
   async execute(userId: string) {
     const { expiresIn, secret } = authConfig.jwt;
 
     if (!secret) {
-      throw new BadRequestError("Secret is not defined on the configuration.");
+      throw new AppError("Secret is not defined on the configuration.", BAD_REQUEST);
     }
 
     const token = sign({}, secret, {

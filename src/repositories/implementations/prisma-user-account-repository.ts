@@ -3,6 +3,7 @@ import { prisma } from "@prisma-client/PrismaClient";
 import { CreateUserAccountDTO } from "@dtos/CreateUserAccountDTO";
 import { UpdateUserAccountDTO } from "@dtos/UpdateUserAccountDTO";
 import { UserAccountRepository } from "../user-account-repository";
+import { UserAccountResponseDTO } from "@dtos/UserAccountResponseDTO";
 
 export class PrismaUserAccountRepository implements UserAccountRepository {
   async create({ name, username, email, password }: CreateUserAccountDTO): Promise<User> {
@@ -38,7 +39,7 @@ export class PrismaUserAccountRepository implements UserAccountRepository {
     });
   }
 
-  async findAll(): Promise<Pick<User, 'id' | 'name' | 'username' | 'email'>[] | null> {
+  async findAll(): Promise<UserAccountResponseDTO[] | null> {
     const users = await prisma.user.findMany({ 
       select: {
         id: true,

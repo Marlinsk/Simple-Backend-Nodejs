@@ -1,5 +1,6 @@
 import { AppError } from "@errors/AppError";
 import { Request, Response, NextFunction } from "express";
+import { INTERNAL_SERVER_ERROR } from "src/constants/http-status";
 
 export function errorMiddleware(
   error: Error & Partial<AppError>,
@@ -7,8 +8,8 @@ export function errorMiddleware(
   response: Response,
   next: NextFunction
 ) {
-  const statusCode = error.statusCode ?? 500;
-  const message = error.statusCode ? error.message : "Internal Server Error";
+  const statusCode =  error.status ? error.status : INTERNAL_SERVER_ERROR;
+  const message = error.status ? error.message : "Internal Server Error";
   
   return response.status(statusCode).json({ error: { problem: message } });
 }
