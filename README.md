@@ -1,4 +1,4 @@
-# <img src="https://github.com/Marlinsk/node-authentication-backend/blob/main/.github/key.png" width="48px" height="48px"> Node Authentication Backend Application
+# <img src="https://github.com/Marlinsk/node-authentication-backend/blob/main/.github/key.png" width="48px" height="48px"> Node.js Authentication Backend Application
 A user authentication backend developed in a straightforward manner to gain practical knowledge of JWT-based authentication.
 
 ## Description
